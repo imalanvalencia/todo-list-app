@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import * as React from 'react'
+import { Minus, Plus } from 'lucide-react'
 
-function App() {
-  const [count, setCount] = useState(0)
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+  DrawerTrigger
+} from '@/components/ui/drawer'
 
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Drawer>
+      <DrawerTrigger asChild>
+        <button>Open message drawer</button>
+      </DrawerTrigger>
+
+      <DrawerContent>
+        <div className='mx-auto w-full max-w-sm'>
+          <DrawerHeader>
+            <DrawerTitle>Hola a todos!</DrawerTitle>
+            <DrawerDescription>
+              Soy alan valencia setupndio(no se como se escribe) este prejecto
+            </DrawerDescription>
+          </DrawerHeader>
+          <DrawerFooter>
+            <DrawerClose asChild>
+              <button>Cancel button</button>
+            </DrawerClose>
+          </DrawerFooter>
+        </div>
+      </DrawerContent>
+    </Drawer>
   )
 }
 
-export default App
