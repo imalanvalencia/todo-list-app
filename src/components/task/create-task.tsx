@@ -1,8 +1,8 @@
-import {useState, type ComponentProps} from 'react'
+import { useState, type ComponentProps } from "react";
 
-import { cn } from "@/lib/utils"
-import { useMediaQuery } from "@/hooks/use-media-query"
-import { Button } from "@/components/ui/button"
+import { cn } from "@/lib/utils";
+import { useMediaQuery } from "@/hooks/use-media-query";
+import { Button } from "@/components/ui/button";
 import {
   Dialog,
   DialogContent,
@@ -10,7 +10,7 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "@/components/ui/dialog"
+} from "@/components/ui/dialog";
 import {
   Drawer,
   DrawerClose,
@@ -20,20 +20,18 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerTrigger,
-} from "@/components/ui/drawer"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
- 
-export default function CreateTask() {
-  const [open, setOpen] = useState(false)
-  const isDesktop = useMediaQuery("(min-width: 768px)")
- 
+} from "@/components/ui/drawer";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+
+export default function CreateTask({ children }) {
+  const [open, setOpen] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   if (isDesktop) {
     return (
       <Dialog open={open} onOpenChange={setOpen}>
-        <DialogTrigger asChild>
-          <Button variant="outline">Edit Profile</Button>
-        </DialogTrigger>
+        <DialogTrigger asChild>{children?.button}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
             <DialogTitle>Edit profile</DialogTitle>
@@ -44,14 +42,12 @@ export default function CreateTask() {
           <ProfileForm />
         </DialogContent>
       </Dialog>
-    )
+    );
   }
- 
+
   return (
     <Drawer open={open} onOpenChange={setOpen}>
-      <DrawerTrigger asChild>
-        <Button variant="outline">Edit Profile</Button>
-      </DrawerTrigger>
+      <DrawerTrigger asChild>{children?.button}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
           <DrawerTitle>Edit profile</DrawerTitle>
@@ -67,9 +63,9 @@ export default function CreateTask() {
         </DrawerFooter>
       </DrawerContent>
     </Drawer>
-  )
+  );
 }
- 
+
 function ProfileForm({ className }: ComponentProps<"form">) {
   return (
     <form className={cn("grid items-start gap-4", className)}>
@@ -83,5 +79,5 @@ function ProfileForm({ className }: ComponentProps<"form">) {
       </div>
       <Button type="submit">Save changes</Button>
     </form>
-  )
+  );
 }
