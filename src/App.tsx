@@ -1,40 +1,19 @@
-import * as React from 'react'
-import { Minus, Plus } from 'lucide-react'
-
-import {
-  Drawer,
-  DrawerClose,
-  DrawerContent,
-  DrawerDescription,
-  DrawerFooter,
-  DrawerHeader,
-  DrawerTitle,
-  DrawerTrigger
-} from '@/components/ui/drawer'
+import Header from "@/components/ui/header";
+import Footer from "@/components/ui/footer";
+import checklist_guy from "@/assets/checklist-guy.svg";
 
 export default function App() {
   return (
-    <Drawer>
-      <DrawerTrigger asChild>
-        <button>Open message drawer</button>
-      </DrawerTrigger>
-
-      <DrawerContent>
-        <div className='mx-auto w-full max-w-sm'>
-          <DrawerHeader>
-            <DrawerTitle>Hola a todos!</DrawerTitle>
-            <DrawerDescription>
-              Soy alan valencia setupndio(no se como se escribe) este prejecto
-            </DrawerDescription>
-          </DrawerHeader>
-          <DrawerFooter>
-            <DrawerClose asChild>
-              <button>Cancel button</button>
-            </DrawerClose>
-          </DrawerFooter>
-        </div>
-      </DrawerContent>
-    </Drawer>
-  )
+    <div className="flex flex-col min-w-full w-[425px] min-h-screen backdrop-blur-lg bg-clip-padding backdrop-filter">
+      <Header />
+      <main className="flex-grow text-center px-6">
+        <section>
+          <img src={checklist_guy} alt="checklist guy" className="mx-auto" />
+          <h2 className="text-xl">What do you want to do today?</h2>
+          <p className="text-lg font-light">Tap + to add your tasks</p>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
 }
-
