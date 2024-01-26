@@ -26,7 +26,11 @@
       "warn",
       { "allowConstantExport": true }
     ],
+<<<<<<< HEAD
     "typescript-eslint/explicit-function-return-type": "off",
+=======
+    "@typescript-eslint/explicit-function-return-type": "off",
+>>>>>>> b46a4f8 (Add prettier and improve eslint config)
     "react/self-closing-comp": "warn",
     "react/react-in-jsx-scope": "off"
   }
