@@ -1,4 +1,10 @@
-export default function HomeIcon({ className, fill, ...restProps }) {
+import type { SvgComponentProps } from './icon-component'
+
+interface Props extends SvgComponentProps {
+  fill?: boolean
+}
+
+export default function HomeIcon({ className, fill, ...restProps }: Props) {
   if (fill) {
     return (
       <svg
@@ -15,7 +21,7 @@ export default function HomeIcon({ className, fill, ...restProps }) {
           fillOpacity="0.87"
         />
       </svg>
-    );
+    )
   }
 
   return (
@@ -37,5 +43,5 @@ export default function HomeIcon({ className, fill, ...restProps }) {
         fillOpacity="0.87"
       />
     </svg>
-  );
+  )
 }
