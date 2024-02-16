@@ -1,4 +1,10 @@
-export default function CalendarIcon({ className, fill, ...restProps }) {
+import type { SvgComponentProps } from './icon-component'
+
+interface Props extends SvgComponentProps {
+  fill?: boolean
+}
+
+export default function CalendarIcon({ className, fill, ...restProps }: Props) {
   if (fill) {
     return (
       <svg
@@ -17,7 +23,7 @@ export default function CalendarIcon({ className, fill, ...restProps }) {
           fillOpacity="0.87"
         />
       </svg>
-    );
+    )
   }
   return (
     <svg
@@ -36,5 +42,5 @@ export default function CalendarIcon({ className, fill, ...restProps }) {
         d="M16 22.75H8c-3.65 0-5.75-2.1-5.75-5.75V8.5c0-3.65 2.1-5.75 5.75-5.75h8c3.65 0 5.75 2.1 5.75 5.75V17c0 3.65-2.1 5.75-5.75 5.75ZM8 4.25c-2.86 0-4.25 1.39-4.25 4.25V17c0 2.86 1.39 4.25 4.25 4.25h8c2.86 0 4.25-1.39 4.25-4.25V8.5c0-2.86-1.39-4.25-4.25-4.25H8Z"
       />
     </svg>
-  );
+  )
 }
