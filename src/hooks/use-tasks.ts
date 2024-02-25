@@ -2,7 +2,10 @@ import { TasksContext } from '@/context/tasks'
 import { useContext } from 'react'
 
 export const useTasks = () => {
-  const { tasks, setTasks } = useContext(TasksContext)
+  const context = useContext(TasksContext)
 
-  return { tasks, setTasks }
+  if (context === undefined)
+    throw new Error('useTasks must be used within a TasksProvider')
+
+  return context
 }
