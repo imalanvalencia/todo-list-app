@@ -23,6 +23,8 @@ import TaskCategoryForm from './task-category-form'
 import TaskPriorityForm from './task-priority-form'
 import { useTasks } from '@/hooks/use-tasks'
 
+// FIXME: the date regex dont work fine
+
 const formSchema = z.object({
   'task-title': z.string({ required_error: 'Title is required' }),
   'task-description': z.string().optional(),
@@ -32,8 +34,12 @@ const formSchema = z.object({
   'task-priority': z.string()
 })
 
-export default function TaskForm({ className }: ComponentProps<'form'>) {
-  const { setTasks } = useTasks()
+interface IProps extends ComponentProps<'form'> {
+  closeForm: (value: boolean) => void
+}
+
+export default function TaskForm({ className, closeForm }: IProps) {
+  const { addTask } = useTasks()
   const [step, setStep] = useState(1)
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -49,8 +55,16 @@ export default function TaskForm({ className }: ComponentProps<'form'>) {
   })
 
   const onSubmit = (newTask: z.infer<typeof formSchema>) => {
-    setTasks((prevTasks) => [...prevTasks, newTask])
-    console.log(newTask)
+    closeForm(false)
+    const parseTask = {
+      title: newTask['task-title'],
+      description: newTask['task-description'],
+      date: newTask['task-date'],
+      time: newTask['task-time'],
+      category: newTask['task-category'],
+      priority: newTask['task-priority']
+    }
+    addTask(parseTask)
   }
 
   return (
