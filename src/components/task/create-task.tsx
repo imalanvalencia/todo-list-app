@@ -28,6 +28,10 @@ interface Props {
   }
 }
 
+// TODO: Improve this description
+const FORM_TITLE = 'Create a Task'
+const FORM_DESCRIPTION = 'Fill the input and ...., Click save when you&apos;re done.'
+
 export default function CreateTask({ children }: Props) {
   const [open, setOpen] = useState(false)
   const isDesktop = useMediaQuery('(min-width: 425px)')
@@ -38,13 +42,10 @@ export default function CreateTask({ children }: Props) {
         <DialogTrigger asChild>{children?.button}</DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
-            <DialogTitle>Create a Task</DialogTitle>
-            <DialogDescription>
-              {/* TODO: improve the description */}
-              Fill the input and ...., Click save when you&apos;re done.
-            </DialogDescription>
+            <DialogTitle>{FORM_TITLE}</DialogTitle>
+            <DialogDescription>{FORM_DESCRIPTION}</DialogDescription>
           </DialogHeader>
-          <TaskForm />
+          <TaskForm closeForm={(s) => { setOpen(s) }} />
         </DialogContent>
       </Dialog>
     )
@@ -55,12 +56,10 @@ export default function CreateTask({ children }: Props) {
       <DrawerTrigger asChild>{children?.button}</DrawerTrigger>
       <DrawerContent>
         <DrawerHeader className="text-left">
-          <DrawerTitle>Edit profile</DrawerTitle>
-          <DrawerDescription>
-            Make changes to your profile here. Click save when you&apos;re done.
-          </DrawerDescription>
+          <DrawerTitle>{FORM_TITLE}</DrawerTitle>
+          <DrawerDescription>{FORM_DESCRIPTION}</DrawerDescription>
         </DrawerHeader>
-        <TaskForm className="px-4" />
+        <TaskForm className="px-4" closeForm={(s) => { setOpen(s) }} />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>

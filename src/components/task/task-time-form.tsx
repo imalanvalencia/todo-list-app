@@ -28,7 +28,7 @@ export default function TaskTimeForm({ control }) {
         render={({ field }) => (
           <FormItem className="flex flex-col">
             <FormLabel>Choose Time</FormLabel>
-            <Input type="time" {...field} /* value={currentHHMM} */ required />
+            <Input type="time" {...field} required />
             <FormMessage />
           </FormItem>
         )}
