@@ -83,17 +83,16 @@ export function TasksProvider({
     setTasks([])
   }
 
-  const changeTaskStatus = ({ id }: TaskIdandStatus) => {
+  const changeTaskStatus = ({ id, completed }: TaskIdandStatus) => {
     const newTasks = tasks.map((task) => {
       if (task.id === id) {
         return {
           ...task,
-          completed: !task.completed
+          completed
         }
       }
       return task
     })
-
     setTasks(newTasks)
   }
 
