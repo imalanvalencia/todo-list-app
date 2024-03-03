@@ -1,7 +1,7 @@
-import CalendarIcon from "@/components/icons/calendar";
-import HomeIcon from "@/components/icons/home";
-import CreateTask from "@/components/task/create-task";
-import { Button } from "@/components/ui/button";
+import CalendarIcon from '@/components/icons/calendar'
+import HomeIcon from '@/components/icons/home'
+import CreateTask from '@/components/task/create-task'
+import { Button } from '@/components/ui/button'
 
 export default function Footer() {
   return (
@@ -20,7 +20,7 @@ export default function Footer() {
               <Button className="size-16 text-3xl rounded-full bg-indigo-400 hover:bg-indigo-800 p-2 text-center text-white -mt-12">
                 +
               </Button>
-            ),
+            )
           }}
         </CreateTask>
         <a
@@ -32,5 +32,5 @@ export default function Footer() {
         </a>
       </nav>
     </footer>
-  );
+  )
 }

@@ -30,7 +30,8 @@ interface Props {
 
 // TODO: Improve this description
 const FORM_TITLE = 'Create a Task'
-const FORM_DESCRIPTION = 'Fill the input and ...., Click save when you&apos;re done.'
+const FORM_DESCRIPTION =
+  'Fill the input and ...., Click save when you&apos;re done.'
 
 export default function CreateTask({ children }: Props) {
   const [open, setOpen] = useState(false)
@@ -45,7 +46,11 @@ export default function CreateTask({ children }: Props) {
             <DialogTitle>{FORM_TITLE}</DialogTitle>
             <DialogDescription>{FORM_DESCRIPTION}</DialogDescription>
           </DialogHeader>
-          <TaskForm closeForm={(s) => { setOpen(s) }} />
+          <TaskForm
+            closeForm={(s) => {
+              setOpen(s)
+            }}
+          />
         </DialogContent>
       </Dialog>
     )
@@ -59,7 +64,12 @@ export default function CreateTask({ children }: Props) {
           <DrawerTitle>{FORM_TITLE}</DrawerTitle>
           <DrawerDescription>{FORM_DESCRIPTION}</DrawerDescription>
         </DrawerHeader>
-        <TaskForm className="px-4" closeForm={(s) => { setOpen(s) }} />
+        <TaskForm
+          className="px-4"
+          closeForm={(s) => {
+            setOpen(s)
+          }}
+        />
         <DrawerFooter className="pt-2">
           <DrawerClose asChild>
             <Button variant="outline">Cancel</Button>
